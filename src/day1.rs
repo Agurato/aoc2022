@@ -10,7 +10,7 @@ pub fn ex1(test: bool) {
 
     let mut max_calory: u32 = 0;
     let mut current_calory: u32 = 0;
-    for line in lines.iter() {
+    for line in lines {
         if line.len() == 0 {
             if max_calory < current_calory {
                 max_calory = current_calory
@@ -32,7 +32,7 @@ pub fn ex2(test: bool) {
 
     let mut calories: Vec<u32> = Vec::new();
     let mut calory_count: u32 = 0;
-    for line in lines.iter() {
+    for line in lines {
         if line.len() == 0 {
             calories.push(calory_count);
             calory_count = 0;

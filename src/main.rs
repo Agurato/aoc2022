@@ -1,4 +1,5 @@
 mod day1;
+mod day2;
 mod utils;
 
 use std::env;
@@ -11,6 +12,7 @@ fn main() {
     let is_test = arguments.get(2) == Some(&"test".to_string());
     match day_number {
         1 => day1::day(is_test),
+        2 => day2::day(is_test),
         _ => panic!("kaput"),
     }
 }
