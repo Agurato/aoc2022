@@ -1,5 +1,6 @@
 mod day1;
 mod day2;
+mod day3;
 mod utils;
 
 use std::env;
@@ -13,6 +14,7 @@ fn main() {
     match day_number {
         1 => day1::day(is_test),
         2 => day2::day(is_test),
+        3 => day3::day(is_test),
         _ => panic!("kaput"),
     }
 }
