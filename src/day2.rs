@@ -31,3 +31,14 @@ pub fn ex2(test: bool) -> i32 {
     }
     total
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn day() {
+        assert_eq!(ex1(false), 12535);
+        assert_eq!(ex2(false), 15457);
+    }
+}
