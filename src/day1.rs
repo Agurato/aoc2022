@@ -1,11 +1,11 @@
 use crate::utils;
 
 pub fn day(test: bool) {
-    ex1(test);
-    ex2(test);
+    println!("{}", ex1(test));
+    println!("{}", ex2(test));
 }
 
-pub fn ex1(test: bool) {
+pub fn ex1(test: bool) -> u32 {
     let lines = utils::read_input(1, test).expect("Should have been able to read the file");
 
     let mut max_calory: u32 = 0;
@@ -24,10 +24,10 @@ pub fn ex1(test: bool) {
     if max_calory < current_calory {
         max_calory = current_calory
     }
-    println!("{max_calory}")
+    max_calory
 }
 
-pub fn ex2(test: bool) {
+pub fn ex2(test: bool) -> u32 {
     let lines = utils::read_input(1, test).expect("Should have been able to read the file");
 
     let mut calories: Vec<u32> = Vec::new();
@@ -46,7 +46,5 @@ pub fn ex2(test: bool) {
     calories.sort_by(|a, b| b.cmp(a));
     // println!("{calories:#?}");
 
-    let top: u32 = calories[..3].into_iter().sum();
-
-    println!("{top}")
+    calories[..3].into_iter().sum()
 }

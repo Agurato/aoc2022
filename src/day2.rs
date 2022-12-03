@@ -1,11 +1,11 @@
 use crate::utils;
 
 pub fn day(test: bool) {
-    ex1(test);
-    ex2(test);
+    println!("{}", ex1(test));
+    println!("{}", ex2(test));
 }
 
-pub fn ex1(test: bool) {
+pub fn ex1(test: bool) -> i32 {
     let lines = utils::read_input(2, test).expect("Should have been able to read the file");
     let mut total: i32 = 0;
     for line in lines {
@@ -16,10 +16,10 @@ pub fn ex1(test: bool) {
         let win_score = ((diff + 1).rem_euclid(3)) * 3; // shift by 1, then positive modulo to have 0: loss, 1: draw, 2: win
         total += (choice_score + win_score) as i32;
     }
-    println!("{total}")
+    total
 }
 
-pub fn ex2(test: bool) {
+pub fn ex2(test: bool) -> i32 {
     let lines = utils::read_input(2, test).expect("Should have been able to read the file");
     let mut total: i32 = 0;
     for line in lines {
@@ -29,5 +29,5 @@ pub fn ex2(test: bool) {
         let choice_score = ((bytes[0] - 65) + shift).rem_euclid(3) + 1; // [0;2] + shift, then modulo to have cycle, then +1 for score
         total += (choice_score + win_score) as i32;
     }
-    println!("{total}")
+    total
 }
