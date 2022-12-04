@@ -1,13 +1,12 @@
 use crate::utils;
 
 pub fn day(test: bool) {
-    println!("{}", ex1(test));
-    println!("{}", ex2(test));
+    let lines = utils::read_input(1, test).expect("Should have been able to read the file");
+    println!("{}", ex1(&lines));
+    println!("{}", ex2(&lines));
 }
 
-pub fn ex1(test: bool) -> u32 {
-    let lines = utils::read_input(1, test).expect("Should have been able to read the file");
-
+pub fn ex1(lines: &Vec<String>) -> u32 {
     let mut max_calory: u32 = 0;
     let mut current_calory: u32 = 0;
     for line in lines {
@@ -27,9 +26,7 @@ pub fn ex1(test: bool) -> u32 {
     max_calory
 }
 
-pub fn ex2(test: bool) -> u32 {
-    let lines = utils::read_input(1, test).expect("Should have been able to read the file");
-
+pub fn ex2(lines: &Vec<String>) -> u32 {
     let mut calories: Vec<u32> = Vec::new();
     let mut calory_count: u32 = 0;
     for line in lines {
@@ -55,7 +52,8 @@ mod tests {
 
     #[test]
     fn day() {
-        assert_eq!(ex1(false), 69501);
-        assert_eq!(ex2(false), 202346);
+        let lines = utils::read_input(1, false).expect("Should have been able to read the file");
+        assert_eq!(ex1(&lines), 69501);
+        assert_eq!(ex2(&lines), 202346);
     }
 }

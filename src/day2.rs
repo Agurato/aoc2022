@@ -1,12 +1,12 @@
 use crate::utils;
 
 pub fn day(test: bool) {
-    println!("{}", ex1(test));
-    println!("{}", ex2(test));
+    let lines = utils::read_input(2, test).expect("Should have been able to read the file");
+    println!("{}", ex1(&lines));
+    println!("{}", ex2(&lines));
 }
 
-pub fn ex1(test: bool) -> i32 {
-    let lines = utils::read_input(2, test).expect("Should have been able to read the file");
+pub fn ex1(lines: &Vec<String>) -> i32 {
     let mut total: i32 = 0;
     for line in lines {
         let mut bytes: Vec<i16> = line.bytes().map(i16::from).take(3).collect();
@@ -19,8 +19,7 @@ pub fn ex1(test: bool) -> i32 {
     total
 }
 
-pub fn ex2(test: bool) -> i32 {
-    let lines = utils::read_input(2, test).expect("Should have been able to read the file");
+pub fn ex2(lines: &Vec<String>) -> i32 {
     let mut total: i32 = 0;
     for line in lines {
         let bytes: Vec<i16> = line.bytes().map(i16::from).take(3).collect();
@@ -38,7 +37,8 @@ mod tests {
 
     #[test]
     fn day() {
-        assert_eq!(ex1(false), 12535);
-        assert_eq!(ex2(false), 15457);
+        let lines = utils::read_input(2, false).expect("Should have been able to read the file");
+        assert_eq!(ex1(&lines), 12535);
+        assert_eq!(ex2(&lines), 15457);
     }
 }
