@@ -1,5 +1,4 @@
 use std::collections::VecDeque;
-use string_builder::Builder;
 
 use crate::utils;
 
@@ -37,9 +36,29 @@ pub fn ex1(lines: &Vec<String>) -> String {
     res.iter().collect()
 }
 
-pub fn ex2(lines: &Vec<String>) -> i32 {
-    for line in lines {}
-    0
+pub fn ex2(lines: &Vec<String>) -> String {
+    let (mut stacks, moves) = build_stacks_and_moves(lines);
+    for m in moves {
+        let mut chars: VecDeque<char> = VecDeque::new();
+        for _ in 0..m.size {
+            match stacks[m.from - 1].pop_front() {
+                Some(c) => chars.push_front(c),
+                _ => (),
+            };
+        }
+        for c in chars {
+            stacks[m.to - 1].push_front(c)
+        }
+    }
+
+    let mut res: Vec<char> = Vec::new();
+    for s in stacks {
+        match s.front() {
+            Some(c) => res.push(c.clone()),
+            _ => (),
+        };
+    }
+    res.iter().collect()
 }
 
 fn build_stacks_and_moves(lines: &Vec<String>) -> (Vec<VecDeque<char>>, Vec<Move>) {
@@ -94,6 +113,6 @@ mod tests {
     fn day() {
         let lines = utils::read_input(5, false).expect("Should have been able to read the file");
         assert_eq!(ex1(&lines), "VCTFTJQCG");
-        assert_eq!(ex2(&lines), 0);
+        assert_eq!(ex2(&lines), "GCFGLDNJZ");
     }
 }
