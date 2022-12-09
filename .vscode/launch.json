@@ -20,7 +20,7 @@
                 }
             },
             "args": [
-                "4",
+                "6",
                 "test"
             ],
             "cwd": "${workspaceFolder}"
