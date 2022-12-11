@@ -1,4 +1,5 @@
 mod day1;
+mod day10;
 mod day2;
 mod day3;
 mod day4;
@@ -21,6 +22,7 @@ fn main() {
         4 => day4::day(is_test),
         5 => day5::day(is_test),
         6 => day6::day(is_test),
+        10 => day10::day(is_test),
         _ => panic!("kaput"),
     }
 }
